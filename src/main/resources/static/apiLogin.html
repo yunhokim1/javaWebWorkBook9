@@ -15,7 +15,14 @@
 
         const data = {mid:"apiUser10", mpw: "1111"}
 
-        axios.post("http://localhost:8080/generateToken", data)
+        axios.post("http://localhost:8080/generateToken", data).then(res => {
+
+            const accessToken = res.data.accessToken
+            const refreshToken = res.data.refreshToken
+
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+        })
 
     }, false)
 </script>
